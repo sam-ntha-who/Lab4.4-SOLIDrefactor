@@ -11,14 +11,22 @@ public class VHS implements Play {
 	private int runTime;
 	private ArrayList<String> scenes;
 
-	public VHS(String title, int runTime, ArrayList<String> scenes) {
-
-		setTitle(title);
-		setRunTime(runTime);
-		setScenes(scenes);
+	public VHS(String title) {
+	//	this.play = play;
+		this.title = title;
+	
 
 	}
-	public VHS(Play play){
+	public VHS(Play play) {
+		
+	}
+	public Play getPlay() {
+		return play;
+	}
+	public void setPlay(Play play) {
+		this.play = play;
+	}
+	public VHS(){
 		
 	}
 	
@@ -58,12 +66,12 @@ public class VHS implements Play {
 //	parameter to the Play() method
 	@Override
 	public void play(ArrayList<String> scenes) {
-
-		for (int i = 0; i < getScenes().size(); i++) {
-			System.out.println(getScenes().get(getCurrentTime()));
+	
+		for (int i = 0; i < scenes.size(); i++) {
+			System.out.println("Scene " + (i+1) + ": " + scenes.get(getCurrentTime()));
 			currentTime++;
 
-			if (getScenes().size() < currentTime + 1) {
+			if (scenes.size() < currentTime + 1) {
 				rewind();
 			}
 		}
@@ -77,8 +85,8 @@ public class VHS implements Play {
 
 	}
 
-	public String printInfo() {
-
-		return getTitle() + ", Runtime of: " + getRunTime() + " minutes";
-	}
+//	public String printInfo() {
+//		
+//		return getTitle() + ", Runtime of: " + getRunTime() + " minutes";
+//	}
 }

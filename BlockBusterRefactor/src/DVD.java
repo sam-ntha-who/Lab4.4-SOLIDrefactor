@@ -10,22 +10,29 @@ public class DVD implements Play {
 	private ArrayList<String> scenes;
 
 	public DVD(String title, int runTime, ArrayList<String> scenes) {
-		setTitle(title);
-		setRunTime(runTime);
-		setScenes(scenes);
+		//	this.play = play;
+		this.title = title;
+		this.runTime = runTime;
+		this.scenes = scenes;
 	}
-	public DVD(Play play){
+	public DVD(){
 		
 	}
+	
+	public DVD(Play play) {
+		
+	}
+	
 	@Override
 	public void play(ArrayList<String> scenes) {
 
 		System.out.println("Which scene would you like to watch?");
-		printScenes();
+		
+		printScenes(scenes);
 		System.out.println("Please choose a scene (by number):");
 		Scanner scnr = new Scanner(System.in);
 		int sceneSelection = scnr.nextInt() - 1;
-		System.out.println(getScenes().get(sceneSelection));
+		System.out.println(scenes.get(sceneSelection));
 
 		boolean yesOrNo = false;
 	
@@ -46,7 +53,7 @@ public class DVD implements Play {
 				System.out.println("Scene does not exist. Goodbye.");
 			}
 			
-			System.out.println(getScenes().get(sceneSelection));
+			System.out.println(scenes.get(sceneSelection));
 			System.out.println("Would you like to continue watching? y/n");
 			response = scnr.next();
 			if (response.equalsIgnoreCase("y")) {
@@ -68,10 +75,10 @@ public class DVD implements Play {
 
 	}
 
-	public void printScenes() {
-		scenes = getScenes();
-		for (int i = 0; i < getScenes().size(); i++) {
-			System.out.println("Scene " + (i + 1) + ": " + getScenes().get(i));
+	public void printScenes(ArrayList<String> scenes) {
+		
+		for (int i = 0; i < scenes.size(); i++) {
+			System.out.println("Scene " + (i + 1) + ": " + scenes.get(i));
 		}
 	}
 

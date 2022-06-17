@@ -16,15 +16,30 @@ public class Movie {
 	private String title;
 	private int runTime;
 	private ArrayList<String> scenes;
+	private int currentTime = 0;
+	
+	public int getCurrentTime() {
+		return currentTime;
+	}
+
+	public void setCurrentTime(int currentTime) {
+		this.currentTime = currentTime;
+	}
 
 	public Movie(Play play) {
-		this.play = play;
+		
 	}
 	
-	public Movie(String title, int runTime, ArrayList<String> scenes) {
-		setTitle(title);
-		setRunTime(runTime);
-		setScenes(scenes);
+	public Movie(String title, int runTime, ArrayList<String> scenes, Play play) {
+	this.play = play;
+	this.title = title;
+	this.runTime = runTime;
+	this.scenes = scenes;
+	
+	}
+
+	public void setPlay(Play play) {
+		this.play = play;
 	}
 
 	public Play getPlay() {
@@ -62,11 +77,19 @@ public class Movie {
 
 	public void printScenes() {
 		for (String scene : scenes) {
-			System.out.println("Scene " + scenes.indexOf(scene) + ": " + scene);
+			System.out.println("Scene " + (scenes.indexOf(scene)+1) + ": " + scene);
 		}
 	}
+	public void rewind() {
+		setCurrentTime(0);
+		System.out.println("\nBe Kind, Rewind");
 
+	}
+	
 	public void play() {
-		play.play(getScenes());
+		play.play(scenes);
+//		for (String scene : scenes) {
+//			System.out.println("Scene " + (scenes.indexOf(scene)+1) + ": " + scene);
+//		}
 	}
 }
