@@ -2,56 +2,35 @@ import java.util.ArrayList;
 
 public class VHS implements Play {
 
-//	Instead of Movie, these should implement the Play interface. Otherwise their play methods 
-//	should hold the same functionality: DVD lets you pick any scene, VHS plays whatever scene 
-//	you are currently on and rewinds when appropriate	
-	Play play;
-	private int currentTime = 0;
+	// instead of movie, this class should implement the Play interface
+	// otherwise the play methods should hold the same functionality as before - VHS
+	// starts from current scene and play through
+	// instead of coming from a property, the play method in VHS should be passed as
+	// parameters into the Play() method
+
 	private String title;
-	private int runTime;
-	private ArrayList<String> scenes;
-
-	public VHS(String title) {
-	//	this.play = play;
-		this.title = title;
-	
-
-	}
-	public VHS(Play play) {
+	private int currentTime;
+	private int sceneSelection;
+	public VHS() {
 		
 	}
-	public Play getPlay() {
-		return play;
-	}
-	public void setPlay(Play play) {
-		this.play = play;
-	}
-	public VHS(){
-		
+	@Override
+	public void play(ArrayList<String> scenes) {
+		for (int i = 0; i < scenes.size(); i++) {
+			System.out.println("Scene " + (i + 1) + ": " + scenes.get(i));
+		}
+
+		if (scenes.size() < getCurrentTime() + 1) {
+			rewind();
+		}
 	}
 	
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public int getRunTime() {
-		return runTime;
-	}
-
-	public void setRunTime(int runTime) {
-		this.runTime = runTime;
-	}
-
-	public ArrayList<String> getScenes() {
-		return scenes;
-	}
-
-	public void setScenes(ArrayList<String> scenes) {
-		this.scenes = scenes;
+	
+	// A method called rewind() that returns nothing and sets currentTime to 0.
+	public void rewind() {
+		setCurrentTime(0);
+		System.out.println("\nBe Kind, Rewind");
+		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	}
 
 	public int getCurrentTime() {
@@ -62,31 +41,17 @@ public class VHS implements Play {
 		this.currentTime = currentTime;
 	}
 
-//	Instead of coming from a property, the scenes in VHS and DVD should be passed in a 
-//	parameter to the Play() method
-	@Override
-	public void play(ArrayList<String> scenes) {
-	
-		for (int i = 0; i < scenes.size(); i++) {
-			System.out.println("Scene " + (i+1) + ": " + scenes.get(getCurrentTime()));
-			currentTime++;
-
-			if (scenes.size() < currentTime + 1) {
-				rewind();
-			}
-		}
-
+	public String getTitle() {
+		return title;
 	}
 
-//	A method called rewind() that returns nothing and sets currentTime to 0. 
-	public void rewind() {
-		setCurrentTime(0);
-		System.out.println("\nBe Kind, Rewind");
-
+	public void setTitle(String title) {
+		this.title = title;
 	}
-
-//	public String printInfo() {
-//		
-//		return getTitle() + ", Runtime of: " + getRunTime() + " minutes";
-//	}
+	public int getSceneSelection() {
+		return sceneSelection;
+	}
+	public void setSceneSelection(int sceneSelection) {
+		this.sceneSelection = sceneSelection;
+	}
 }

@@ -1,49 +1,42 @@
-
-
-//Movie should no longer be an abstract class, instead swap to a concrete class [We're using 
-//composition instead of inheritance. VHS & DVD should implement the Play interface, meaning 
-//they can be referenced by type Play.]
-
 import java.util.ArrayList;
 
 public class Movie {
+	// According to SOLID principles - each method should be responsible for one
+	// thing
+	// this method is responsible for the object movie and creating instances of it
 
-//	Create a Play Property at the top, fill in that property by taking in a parameter in the 
-//	constructor [Play is the name of the interface- create a field of type Play and give it 
-//	value via the constructor.]
+	// [When you create an object of the Movie class
+	// in the main method, you'll be passing it an object of type Play which will
+	// need to be instantiated as either a DVD or a
+	// VHS. The play() method gets defined in the DVD and VHS classes (because they
+	// implement the Play interface).]
 
 	private Play play;
 	private String title;
 	private int runTime;
 	private ArrayList<String> scenes;
 	private int currentTime = 0;
-	
-	public int getCurrentTime() {
-		return currentTime;
+
+	public Movie() {
+
 	}
 
-	public void setCurrentTime(int currentTime) {
-		this.currentTime = currentTime;
-	}
-
-	public Movie(Play play) {
-		
-	}
-	
 	public Movie(String title, int runTime, ArrayList<String> scenes, Play play) {
-	this.play = play;
-	this.title = title;
-	this.runTime = runTime;
-	this.scenes = scenes;
-	
-	}
-
-	public void setPlay(Play play) {
+		this.title = title;
+		this.runTime = runTime;
+		this.scenes = scenes;
 		this.play = play;
 	}
 
-	public Play getPlay() {
-		return play;
+	public void printScenes() {
+		for (String scene : scenes) {
+			System.out.println("Scene " + (scenes.indexOf(scene) + 1) + ": " + scene);
+		}
+	}
+
+	public String printInfo() {
+
+		return getTitle() + ", Runtime of: " + getRunTime() + " minutes";
 	}
 
 	public String getTitle() {
@@ -58,10 +51,6 @@ public class Movie {
 		return runTime;
 	}
 
-	public void setRunTime(int runTime) {
-		this.runTime = runTime;
-	}
-
 	public ArrayList<String> getScenes() {
 		return scenes;
 	}
@@ -70,26 +59,18 @@ public class Movie {
 		this.scenes = scenes;
 	}
 
-	public String printInfo() {
-
-		return getTitle() + ", Runtime of: " + getRunTime() + " minutes";
+	public int getCurrentTime() {
+		return currentTime;
 	}
 
-	public void printScenes() {
-		for (String scene : scenes) {
-			System.out.println("Scene " + (scenes.indexOf(scene)+1) + ": " + scene);
-		}
+	public void setCurrentTime(int currentTime) {
+		this.currentTime = currentTime;
+	}
+
+	public void play() {
+		play.play(scenes);
 	}
 	public void rewind() {
 		setCurrentTime(0);
-		System.out.println("\nBe Kind, Rewind");
-
-	}
-	
-	public void play() {
-		play.play(scenes);
-//		for (String scene : scenes) {
-//			System.out.println("Scene " + (scenes.indexOf(scene)+1) + ": " + scene);
-//		}
 	}
 }
