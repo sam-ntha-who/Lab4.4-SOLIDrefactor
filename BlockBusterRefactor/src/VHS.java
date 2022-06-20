@@ -10,7 +10,7 @@ public class VHS implements Play {
 
 	private String title;
 	private int currentTime;
-	private int sceneSelection;
+	
 	public VHS() {
 		
 	}
@@ -45,13 +45,4 @@ public class VHS implements Play {
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public int getSceneSelection() {
-		return sceneSelection;
-	}
-	public void setSceneSelection(int sceneSelection) {
-		this.sceneSelection = sceneSelection;
-	}
 }

@@ -15,6 +15,7 @@ public class Movie {
 	private String title;
 	private int runTime;
 	private ArrayList<String> scenes;
+
 	private int currentTime = 0;
 
 	public Movie() {
@@ -43,10 +44,6 @@ public class Movie {
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public int getRunTime() {
 		return runTime;
 	}
@@ -58,7 +55,6 @@ public class Movie {
 	public void setScenes(ArrayList<String> scenes) {
 		this.scenes = scenes;
 	}
-
 	public int getCurrentTime() {
 		return currentTime;
 	}
@@ -73,4 +69,6 @@ public class Movie {
 	public void rewind() {
 		setCurrentTime(0);
 	}
+
+	
 }

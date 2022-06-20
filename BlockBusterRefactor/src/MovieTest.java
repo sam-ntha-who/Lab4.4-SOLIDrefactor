@@ -87,7 +87,6 @@ class MovieTest {
 						"Sidda gets kidnapped by the Ya-Yas", "All is revealed", "Sidda & Vivi make up"));
 		Movie tester = new Movie("Divine Secrets of the Ya-Ya Sisterhood", 116,
 				divineSecretsOfTheYaYaSisterhoodSceneList, new VHS());
-		tester.setScenes(divineSecretsOfTheYaYaSisterhoodSceneList);
 		tester.setCurrentTime(4);
 		tester.rewind();
 		int expected = 0;
